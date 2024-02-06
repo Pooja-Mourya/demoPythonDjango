@@ -1,12 +1,50 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>hello python</h1>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block start %}
+<div>
+    {% include "component/navbar.html" %}
+
+    <div class="row">
+        <div class="col-md-3">
+            {% include "component/sidebar.html" %}
+        </div>
+        <div class="col-md-9">
+            <div>
+                {% include "component/header.html" %}
+            </div>
+            <!-- Your main content goes here -->
+            <div class="container mt-4">
+
+                <h1 class="mb-4">Hello Python</h1>
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr align="center">
+                            <th align="center">Name</th>
+                            <th align="center">Age</th>
+                            <th align="center">Address</th>
+                            <th align="center">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in students %}
+                        <tr>
+                            <td align="center">{{ row.name }}</td>
+                            <td align="center">{{ row.age }}</td>
+                            <td align="center">{{ row.address }}</td>
+                            <td align="center">
+                                {% if row.age >= 18 %}
+                                <span style="color:red;">{{ row.age }} 👍</span>
+                                {% else %}
+                                <span style="color:green;">{{ row.age }} 👎</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

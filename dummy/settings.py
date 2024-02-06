@@ -39,6 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
+EXTERNAL_APPS = [
+    'dashboard',
+    'vege'
+]
+
+INSTALLED_APPS += EXTERNAL_APPS
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -118,8 +124,11 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATICFILES_DRIS = (
-    os.path.join(BASE_DIR, 'static')
+    os.path.join(BASE_DIR, 'public/static')
 )
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'public/static')
+MEDIA_URL = '/media/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
